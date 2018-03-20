@@ -9,10 +9,14 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::group(['prefix' => 'login'], function () {
+    Route::get('{provider}', 'Auth\SocialAccountController@redirectToProvider');
+    Route::get('{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');
 });
 
 Auth::routes();

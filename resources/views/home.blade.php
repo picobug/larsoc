@@ -18,6 +18,14 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-12">
+            <!-- Login page HTML code  -->
+
+            <a href="/login/facebook"  class="btn btn-default btn-md">Log in with Facebook</a>
+            <a href="/login/twitter"  class="btn btn-default btn-md">Log in with Twitter</a>
+
+            <!-- Login page HTML code  -->
+        </div>
     </div>
 </div>
 @endsection
