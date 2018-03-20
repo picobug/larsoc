@@ -47,4 +47,10 @@ return [
         'redirect' => env('TWITTER_URL'),
     ],
 
+    'instagram' => [
+        'client_id' => env('INSTAGRAM_KEY'),
+        'client_secret' => env('INSTAGRAM_SECRET'),
+        'redirect' => env('INSTAGRAM_REDIRECT_URI'),
+    ],
+
 ];

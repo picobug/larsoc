@@ -23,6 +23,7 @@
 
             <a href="/login/facebook"  class="btn btn-default btn-md">Log in with Facebook</a>
             <a href="/login/twitter"  class="btn btn-default btn-md">Log in with Twitter</a>
+            <a href="/login/instagram"  class="btn btn-default btn-md">Log in with Instagram</a>
 
             <!-- Login page HTML code  -->
         </div>
