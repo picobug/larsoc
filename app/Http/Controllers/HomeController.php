@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
@@ -23,6 +23,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $fb = Cache::tags('users')->get(auth()->user()->id . 'facebook');
+        $tw = Cache::tags('users')->get(auth()->user()->id . 'twitter');
+        $ig = Cache::tags('users')->get(auth()->user()->id . 'instagram');
+        $data = [
+            'fb' => $fb,
+            'tw' => $tw,
+            'ig' => $ig
+        ];
+        return view('home', compact('data'));
     }
 }
