@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 
 class SocialAccountController extends Controller
 {
@@ -37,6 +38,15 @@ class SocialAccountController extends Controller
         );
 
         auth()->login($authUser, true);
+        Cache::tags('users')->remember(auth()->user()->id . $provider, 1440, function () use ($user, $provider) {
+            return [
+                'provider' => $provider,
+                'token' => $user->token,
+                'tokenSecret' => $user->tokenSecret ?? false,
+                'refreshToken' => $user->refreshToken ?? false,
+                'expiresIn' => $user->expiresIn ?? false
+            ];
+        });
 
         return redirect()->to('/home');
     }
