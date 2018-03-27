@@ -23,13 +23,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $fb = Cache::tags('users')->get(auth()->user()->id . 'facebook');
-        $tw = Cache::tags('users')->get(auth()->user()->id . 'twitter');
-        $ig = Cache::tags('users')->get(auth()->user()->id . 'instagram');
+        $user = auth()->user();
+        $tags = ['users',"{$user->name}{$user->email}"];
+        $fb = Cache::tags($tags)->get("{$user->id}_facebook");
+        $tw = Cache::tags($tags)->get("{$user->id}_twitter");
+        $ig = Cache::tags($tags)->get("{$user->id}_instagram");
         $data = [
             'fb' => $fb,
             'tw' => $tw,
-            'ig' => $ig
+            'ig' => $ig,
         ];
         return view('home', compact('data'));
     }

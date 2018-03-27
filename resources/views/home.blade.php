@@ -26,10 +26,11 @@
                     <!-- Login page HTML code  -->
                 </div>
                 <script>
-                    fb = {!! json_encode($data) !!}
+                    user = {!! json_encode($data) !!}
                 </script>
             </div>
         </div>
     </div>
 </div>
+<div id="example"></div>
 @endsection
