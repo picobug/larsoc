@@ -1,5 +1,22 @@
-let mix = require('laravel-mix');
-
+const mix = require('laravel-mix')
+const path = require('path')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+    .BundleAnalyzerPlugin
+const config = {
+    resolve: {
+        alias: {
+            '@js': path.resolve(__dirname, './resources/assets/js'),
+            '@css': path.resolve(__dirname, './resources/assets/sass')
+        }
+    }
+}
+if (mix.inProduction()) {
+    mix.version()
+    config.plugins = [new BundleAnalyzerPlugin()]
+} else {
+    mix.sourceMaps()
+}
+mix.webpackConfig(config)
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,5 +28,8 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.react('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix
+    .react('resources/assets/js/app.js', 'public/js')
+    .react('resources/assets/js/views/Home/index.js', 'public/js')
+    .sass('resources/assets/sass/app.scss', 'public/css')
+    .extract(['react', 'react-dom'])
