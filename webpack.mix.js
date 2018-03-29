@@ -30,6 +30,6 @@ mix.webpackConfig(config)
 
 mix
     .react('resources/assets/js/app.js', 'public/js')
-    .react('resources/assets/js/views/Home/index.js', 'public/js')
+    .react('resources/assets/js/views/Home', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .extract(['react', 'react-dom'])
